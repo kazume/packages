@@ -1300,8 +1300,6 @@ static void selectBestFormatForRequestedFrameRate(
       recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4
                                                forOutput:_captureVideoOutput] mutableCopy];
 
-  printf(availableVideoCodecTypes); // TODO: remove test
-
   if (_mediaSettings.videoBitrate || _mediaSettings.framesPerSecond) {
     NSMutableDictionary *compressionProperties = [[NSMutableDictionary alloc] init];
 
@@ -1313,7 +1311,7 @@ static void selectBestFormatForRequestedFrameRate(
       compressionProperties[AVVideoExpectedSourceFrameRateKey] = _mediaSettings.framesPerSecond;
     }
 
-    videoSettings[AVVideoCompressionPropertiesKey] = compressionProperties;
+    videoSettings[AVVideoCodecType.h264] = compressionProperties;
   }
 
   _videoWriterInput =
