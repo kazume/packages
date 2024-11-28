@@ -1310,9 +1310,10 @@ static void selectBestFormatForRequestedFrameRate(
     if (_mediaSettings.framesPerSecond) {
       compressionProperties[AVVideoExpectedSourceFrameRateKey] = _mediaSettings.framesPerSecond;
     }
-
-    videoSettings[AVVideoCodecType.h264] = compressionProperties;
+    compressionProperties[AVVideoCompressionPropertiesKey] = AVVideoCodecTypeH264;
+    videoSettings[AVVideoCompressionPropertiesKey] = compressionProperties;
   }
+  
 
   _videoWriterInput =
       [_mediaSettingsAVWrapper assetWriterVideoInputWithOutputSettings:videoSettings];
