@@ -1300,6 +1300,8 @@ static void selectBestFormatForRequestedFrameRate(
       recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4
                                                forOutput:_captureVideoOutput] mutableCopy];
 
+  printf(availableVideoCodecTypes); // TODO: remove test
+
   if (_mediaSettings.videoBitrate || _mediaSettings.framesPerSecond) {
     NSMutableDictionary *compressionProperties = [[NSMutableDictionary alloc] init];
 
