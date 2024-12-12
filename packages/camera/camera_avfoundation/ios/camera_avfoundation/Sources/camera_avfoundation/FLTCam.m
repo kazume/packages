@@ -1296,12 +1296,18 @@ static void selectBestFormatForRequestedFrameRate(
     return NO;
   }
 
-  NSMutableDictionary<NSString *, id> *videoSettings = [[_mediaSettingsAVWrapper
-      recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4
-                                               forOutput:_captureVideoOutput] mutableCopy];
+  // NSMutableDictionary<NSString *, id> *videoSettings = [[_mediaSettingsAVWrapper
+  //     recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4
+  //                                              forOutput:_captureVideoOutput] mutableCopy];
+  NSMutableDictionary<NSString *, id> *videoSettings = [@{
+    AVVideoCodecKey: AVVideoCodecTypeH264,
+    AVVideoWidthKey: [NSNumber numberWithInt:_previewSize.width],
+    AVVideoHeightKey: [NSNumber numberWithInt:_previewSize.height]
+  } mutableCopy];
 
-  NSMutableDictionary *compressionProperties = [[NSMutableDictionary alloc] init];
   if (_mediaSettings.videoBitrate || _mediaSettings.framesPerSecond) {
+    NSMutableDictionary *compressionProperties = [[NSMutableDictionary alloc] init];
+
     if (_mediaSettings.videoBitrate) {
       compressionProperties[AVVideoAverageBitRateKey] = _mediaSettings.videoBitrate;
     }
@@ -1309,10 +1315,9 @@ static void selectBestFormatForRequestedFrameRate(
     if (_mediaSettings.framesPerSecond) {
       compressionProperties[AVVideoExpectedSourceFrameRateKey] = _mediaSettings.framesPerSecond;
     }
+
+    videoSettings[AVVideoCompressionPropertiesKey] = compressionProperties;
   }
-  
-  compressionProperties[AVVideoCompressionPropertiesKey] = AVVideoCodecTypeH264;
-  videoSettings[AVVideoCompressionPropertiesKey] = compressionProperties;
 
   _videoWriterInput =
       [_mediaSettingsAVWrapper assetWriterVideoInputWithOutputSettings:videoSettings];
