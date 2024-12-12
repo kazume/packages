@@ -1303,6 +1303,10 @@ static void selectBestFormatForRequestedFrameRate(
     AVVideoCodecKey: AVVideoCodecTypeH264,
     AVVideoWidthKey: [NSNumber numberWithInt:_previewSize.width],
     AVVideoHeightKey: [NSNumber numberWithInt:_previewSize.height]
+    AVVideoCompressionPropertiesKey: @{
+        AVVideoAverageBitRateKey: @(6000000), // 6 Mbps
+        AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel
+    }
   } mutableCopy];
 
   // if (_mediaSettings.videoBitrate || _mediaSettings.framesPerSecond) {
