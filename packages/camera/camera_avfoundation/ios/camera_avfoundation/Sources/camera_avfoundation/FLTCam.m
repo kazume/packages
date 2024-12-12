@@ -1309,6 +1309,8 @@ static void selectBestFormatForRequestedFrameRate(
     }
   } mutableCopy];
 
+  NSLog(@"FIND ME PLLEEEAASSSEE");
+
   // NSMutableDictionary<NSString *, id> *videoSettings;
   // if (@available(iOS 11.0, *)) {
   //   videoSettings = [_captureVideoOutput recommendedVideoSettingsForVideoCodecType:AVVideoCodecTypeH264 assetWriterOutputFileType:AVFileTypeMPEG4];
