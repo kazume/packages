@@ -1299,22 +1299,22 @@ static void selectBestFormatForRequestedFrameRate(
   // NSMutableDictionary<NSString *, id> *videoSettings = [[_mediaSettingsAVWrapper
   //     recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4
   //                                              forOutput:_captureVideoOutput] mutableCopy];
-  // NSMutableDictionary<NSString *, id> *videoSettings = [@{
-  //   AVVideoCodecKey: AVVideoCodecTypeH264,
-  //   AVVideoWidthKey: [NSNumber numberWithInt:_previewSize.width],
-  //   AVVideoHeightKey: [NSNumber numberWithInt:_previewSize.height]
-  //   AVVideoCompressionPropertiesKey: @{
-  //       AVVideoAverageBitRateKey: @(6000000), // 6 Mbps
-  //       AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel
-  //   }
-  // } mutableCopy];
+  NSMutableDictionary<NSString *, id> *videoSettings = [@{
+    AVVideoCodecKey: AVVideoCodecTypeH264,
+    AVVideoWidthKey: [NSNumber numberWithInt:_previewSize.width],
+    AVVideoHeightKey: [NSNumber numberWithInt:_previewSize.height]
+    AVVideoCompressionPropertiesKey: @{
+        AVVideoAverageBitRateKey: @(6000000), // 6 Mbps
+        AVVideoProfileLevelKey: AVVideoProfileLevelH264HighAutoLevel
+    }
+  } mutableCopy];
 
-  NSMutableDictionary<NSString *, id> *videoSettings;
-  if (@available(iOS 11.0, *)) {
-    videoSettings = [_captureVideoOutput recommendedVideoSettingsForVideoCodecType:AVVideoCodecTypeH264 assetWriterOutputFileType:AVFileTypeMPEG4];
-  } else {
-    videoSettings = [_captureVideoOutput recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4];
-  }
+  // NSMutableDictionary<NSString *, id> *videoSettings;
+  // if (@available(iOS 11.0, *)) {
+  //   videoSettings = [_captureVideoOutput recommendedVideoSettingsForVideoCodecType:AVVideoCodecTypeH264 assetWriterOutputFileType:AVFileTypeMPEG4];
+  // } else {
+  //   videoSettings = [_captureVideoOutput recommendedVideoSettingsForAssetWriterWithFileType:AVFileTypeMPEG4];
+  // }
   
    
 

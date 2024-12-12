@@ -49,7 +49,9 @@
 - (nullable NSDictionary<NSString *, id> *)
     recommendedVideoSettingsForAssetWriterWithFileType:(AVFileType)fileType
                                              forOutput:(AVCaptureVideoDataOutput *)output {
-  return [output recommendedVideoSettingsForAssetWriterWithOutputFileType:fileType];
+  //return [output recommendedVideoSettingsForAssetWriterWithOutputFileType:fileType];
+  NSLog(@"FIND ME PLLEEEAASSSEE");
+  return [output recommendedVideoSettingsForVideoCodecType: AVVideoCodecTypeH264 assetWriterOutputFileType:AVFileTypeMPEG4];
 }
 
 @end
