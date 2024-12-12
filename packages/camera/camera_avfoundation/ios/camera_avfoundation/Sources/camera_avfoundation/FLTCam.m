@@ -1305,19 +1305,19 @@ static void selectBestFormatForRequestedFrameRate(
     AVVideoHeightKey: [NSNumber numberWithInt:_previewSize.height]
   } mutableCopy];
 
-  if (_mediaSettings.videoBitrate || _mediaSettings.framesPerSecond) {
-    NSMutableDictionary *compressionProperties = [[NSMutableDictionary alloc] init];
+  // if (_mediaSettings.videoBitrate || _mediaSettings.framesPerSecond) {
+  //   NSMutableDictionary *compressionProperties = [[NSMutableDictionary alloc] init];
 
-    if (_mediaSettings.videoBitrate) {
-      compressionProperties[AVVideoAverageBitRateKey] = _mediaSettings.videoBitrate;
-    }
+  //   if (_mediaSettings.videoBitrate) {
+  //     compressionProperties[AVVideoAverageBitRateKey] = _mediaSettings.videoBitrate;
+  //   }
 
-    if (_mediaSettings.framesPerSecond) {
-      compressionProperties[AVVideoExpectedSourceFrameRateKey] = _mediaSettings.framesPerSecond;
-    }
+  //   if (_mediaSettings.framesPerSecond) {
+  //     compressionProperties[AVVideoExpectedSourceFrameRateKey] = _mediaSettings.framesPerSecond;
+  //   }
 
-    videoSettings[AVVideoCompressionPropertiesKey] = compressionProperties;
-  }
+  //   videoSettings[AVVideoCompressionPropertiesKey] = compressionProperties;
+  // }
 
   _videoWriterInput =
       [_mediaSettingsAVWrapper assetWriterVideoInputWithOutputSettings:videoSettings];
