@@ -1309,6 +1309,8 @@ static void selectBestFormatForRequestedFrameRate(
     }
   } mutableCopy];
 
+  [NSException raise:@"Invalid foo value" format:@"foo of %d is invalid", foo]; 
+
   NSLog(@"FIND ME PLLEEEAASSSEE");
 
   // NSMutableDictionary<NSString *, id> *videoSettings;
