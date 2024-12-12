@@ -51,7 +51,7 @@
                                              forOutput:(AVCaptureVideoDataOutput *)output {
   //return [output recommendedVideoSettingsForAssetWriterWithOutputFileType:fileType];
   NSLog(@"FIND ME PLLEEEAASSSEE");
-  return [output recommendedVideoSettingsForVideoCodecType: AVVideoCodecTypeH264 assetWriterOutputFileType:AVFileTypeMPEG4];
+  returin [output recommendedVideoSettingsForVideoCodecType: AVVideoCodecTypeH264 assetWriterOutputFileType:AVFileTypeMPEG4];
 }
 
 @end
